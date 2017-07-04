@@ -1,17 +1,7 @@
 var thingToSearch;
 var results;
 
-$("#search-box").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#search-button").click();
-    }
-});
-
-$('#search-button').click(function() {
-  $("div.results").html("");
-  thingToSearch = document.getElementById('search-box').value;
-  console.log(thingToSearch);
-
+const searchWikipedia = searchTerm => {
     jQuery.ajax({
       url: "https://en.wikipedia.org/w/api.php",
       type: "GET",
@@ -22,7 +12,7 @@ $('#search-button').click(function() {
           "prop": "",
           "list": "search",
           "indexpageids": "1",
-          "srsearch": thingToSearch,
+          "srsearch": searchTerm,
           "srlimit": "10",
           "srqiprofile": "classic",
       },
@@ -47,6 +37,18 @@ results = data;
       .always(function() {
       console.log("HTTP Request Complete");
     });
+};
 
+
+$("#search-box").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#search-button").click();
+    }
+});
+
+$('#search-button').click(function() {
+  $("div.results").html("");
+  thingToSearch = document.getElementById('search-box').value;
+  searchWikipedia(thingToSearch);
 
 });
