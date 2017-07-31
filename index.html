@@ -1,23 +1,26 @@
-<doctype html>
+<!doctype html>
 <html>
-    <head>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div id="search-section" class="col-sm-6 offset-sm-3 text-center">
-            <input type="text" id="search-box" autofocus />
-            <br />
-            <button type="submit" id="search-button" class="btn btn-primary btn-lg">Search Wikipedia</button>
-        </div>
-        <div class="col-sm-6 offset-sm-3 text-center" id="random-line">
-            <p>Not sure what to search for? <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Get a random article</a>.</p>
-        </div>
-        <div class="col-sm-8  offset-sm-2">
-            <div class="results list-group"></div>
-        </div>
-        <script src="app.js"></script>
-    </body>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="search-section" class="col-sm-6 offset-sm-3 text-center">
+    <input type="text" id="search-box" autofocus />
+    <br />
+    <button type="submit" id="search-button" class="btn btn-primary btn-lg">Search Wikipedia</button>
+  </div>
+  <div class="col-sm-6 offset-sm-3 text-center" id="random-line">
+    <p>Not sure what to search for? <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Get a random article</a>.</p>
+  </div>
+  <div class="col-sm-8  offset-sm-2">
+    <div class="results list-group"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
 </html>
