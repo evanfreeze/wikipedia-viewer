@@ -3,21 +3,29 @@ const buildSingleResult = (result) => {
   const snippet = result.snippet;
   const url = `https://en.wikipedia.org/wiki/${title}`;
   const singleResultHtml = `
-        <a href=${url} alt=${title} target="_blank" class="list-group-item">
-            <h4 class="result-title list-group-item-heading">${title}</h4>
-            <p class="result-snippet list-group-item-text">${snippet}</p>
-        </a>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">${title}</h4>
+          <div class="card-text">
+            ${snippet}
+          </div>
+        </div>
+        <div class="card-footer">
+          <a href=${url} target="_blank" class="card-link">Read More</a>
+        </div>
+      </div>
     `;
   return singleResultHtml;
 };
 
 const buildAllResults = (resultsArray) => {
   for (let result = 0; result < resultsArray.length; result += 1) {
-    $('div.results').append(buildSingleResult(resultsArray[result]));
+    $('.card-deck').append(buildSingleResult(resultsArray[result]));
+    $('.results').css('visibility', 'visible');
   }
 };
 
-const searchWikipedia = (searchTerm) => {
+const searchWikipedia = (searchTerm, offset) => {
   jQuery.ajax({
     url: 'https://en.wikipedia.org/w/api.php',
     type: 'GET',
@@ -29,8 +37,9 @@ const searchWikipedia = (searchTerm) => {
       list: 'search',
       indexpageids: '1',
       srsearch: searchTerm,
-      srlimit: '10',
+      srlimit: '8',
       srqiprofile: 'classic',
+      sroffset: offset,
     },
   })
     .done((data) => {
@@ -38,7 +47,7 @@ const searchWikipedia = (searchTerm) => {
       buildAllResults(results);
     })
     .fail((jqXHR, errorThrown) => {
-      $('div.results').append(errorThrown);
+      $('div.results').append(`<p>${errorThrown}</p>`);
     });
 };
 
@@ -49,7 +58,14 @@ $('#search-box').keyup((event) => {
 });
 
 $('#search-button').click(() => {
-  $('div.results').html('');
+  $('.card-deck').html('');
   const thingToSearch = $('#search-box').val();
-  searchWikipedia(thingToSearch);
+  searchWikipedia(thingToSearch, '0');
+});
+
+let offset = 8;
+$('#more-results').click(() => {
+  const thingToSearch = $('#search-box').val();
+  searchWikipedia(thingToSearch, offset);
+  offset += 8;
 });

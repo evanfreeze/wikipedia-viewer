@@ -7,6 +7,16 @@
 #search-button {
   margin-top: 3%;
 }
+.card {
+  flex-basis: 25% !important;
+  max-width: 22%;
+  margin: 15px;
+  justify-content: space-between;
+}
+.card-footer {
+  background-color: transparent;
+  border: 0;
+}
 button {
   margin: 0 auto;
 }
@@ -24,12 +34,16 @@ input {
 input:focus {
   outline-width: 0;
 }
-div.results span {
+.results {
+  visibility: hidden;
+  padding-bottom: 40px;
+}
+.card-deck span {
   background-color: rgba(37,99,171,0.1);
 }
 .result-title {
   color: #2563AB !important;
 }
-div.results {
+.card-deck {
   margin: 3% 0 3% 0;
 }
