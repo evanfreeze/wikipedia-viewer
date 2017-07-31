@@ -1,7 +1,8 @@
 const buildSingleResult = (result) => {
   const title = result.title;
   const snippet = result.snippet;
-  const url = `https://en.wikipedia.org/wiki/${title}`;
+  const uriTitle = encodeURI(title);
+  const url = `https://en.wikipedia.org/wiki/${uriTitle}`;
   const singleResultHtml = `
         <a href=${url} alt=${title} target="_blank" class="list-group-item">
             <h4 class="result-title list-group-item-heading">${title}</h4>
