@@ -13,11 +13,12 @@ const buildSingleResult = (result) => {
 
 const buildAllResults = (resultsArray) => {
   for (let result = 0; result < resultsArray.length; result += 1) {
-    $('div.results').append(buildSingleResult(resultsArray[result]));
+    $('.list-group').append(buildSingleResult(resultsArray[result]));
+    $('.results').css('visibility', 'visible');
   }
 };
 
-const searchWikipedia = (searchTerm) => {
+const searchWikipedia = (searchTerm, offset) => {
   jQuery.ajax({
     url: 'https://en.wikipedia.org/w/api.php',
     type: 'GET',
@@ -29,8 +30,9 @@ const searchWikipedia = (searchTerm) => {
       list: 'search',
       indexpageids: '1',
       srsearch: searchTerm,
-      srlimit: '10',
+      srlimit: '6',
       srqiprofile: 'classic',
+      sroffset: offset,
     },
   })
     .done((data) => {
@@ -38,7 +40,7 @@ const searchWikipedia = (searchTerm) => {
       buildAllResults(results);
     })
     .fail((jqXHR, errorThrown) => {
-      $('div.results').append(errorThrown);
+      $('.list-group').append(errorThrown);
     });
 };
 
@@ -49,7 +51,15 @@ $('#search-box').keyup((event) => {
 });
 
 $('#search-button').click(() => {
-  $('div.results').html('');
+  $('.list-group').html('');
   const thingToSearch = $('#search-box').val();
-  searchWikipedia(thingToSearch);
+  searchWikipedia(thingToSearch, '0');
+});
+
+let offset = 6;
+
+$('.results button').click(() => {
+  const thingToSearch = $('#search-box').val();
+  searchWikipedia(thingToSearch, offset);
+  offset += 6;
 });

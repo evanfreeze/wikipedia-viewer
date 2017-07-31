@@ -24,12 +24,16 @@ input {
 input:focus {
   outline-width: 0;
 }
-div.results span {
+.list-group span {
   background-color: rgba(37,99,171,0.1);
 }
 .result-title {
   color: #2563AB !important;
 }
-div.results {
+.list-group {
   margin: 3% 0 3% 0;
+}
+.results {
+  padding-bottom: 40px;
+  visibility: hidden;
 }
