@@ -7,7 +7,9 @@
 #search-button {
   margin-top: 3%;
 }
-
+button {
+  margin: 0 auto;
+}
 input {
   width: 100%;
   height: 75px;
@@ -16,18 +18,22 @@ input {
   border: 1px solid #CCC;
   border-radius: 8px;
   background-color: rgba(250,250,250,0.5);
-  padding: 15px;
+  padding: 25px 15px 25px 15px;
   color: #2563AB;
 }
 input:focus {
   outline-width: 0;
 }
-div.results span {
+.list-group span {
   background-color: rgba(37,99,171,0.1);
 }
 .result-title {
   color: #2563AB !important;
 }
-div.results {
-  margin-top: 3%;
+.list-group {
+  margin: 3% 0 3% 0;
+}
+.results {
+  padding-bottom: 40px;
+  visibility: hidden;
 }
